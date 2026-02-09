@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frida 🖤</title>
+
+<style>
+@keyframes fadeIn {
+  from { opacity:0; transform:scale(0.9); }
+  to { opacity:1; transform:scale(1); }
+}
+
+@keyframes bounce {
+  0%,100% { transform:translateY(0); }
+  50% { transform:translateY(-10px); }
+}
+
+@keyframes explode {
+  from { transform:scale(1); opacity:1; }
+  to { transform:scale(2); opacity:0; }
+}
+
+body {
+  margin:0;
+  font-family: system-ui, sans-serif;
+  background: linear-gradient(160deg,#0f0f1a,#3b1c3c);
+  color:white;
+  text-align:center;
+  overflow:hidden;
+}
+
+section {
+  display:none;
+  padding:40px 20px;
+  animation: fadeIn 1s ease;
+}
+
+section.active {
+  display:block;
+}
+
+h1 {
+  font-size:2.2rem;
+  text-shadow:0 0 15px hotpink;
+}
+
+button {
+  padding:18px;
+  font-size:1.3rem;
+  border-radius:18px;
+  border:none;
+  width:80%;
+  max-width:320px;
+  margin:15px auto;
+  display:block;
+}
+
+.primary {
+  background:hotpink;
+  color:black;
+  animation:bounce 2s infinite;
+}
+
+.dark {
+  background:black;
+  color:hotpink;
+  position:relative;
+}
+
+.explosion {
+  position:absolute;
+  font-size:24px;
+  animation: explode 0.6s ease-out forwards;
+  pointer-events:none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PANTALLA 1 -->
+<section id="intro" class="active">
+  <h1>Antes de todo 🖤</h1>
+  <p>Presiona este botón y regresa aquí nuevamente</p>
+  <button class="primary" onclick="openSpotify()">🎧 Presionar</button>
+</section>
+
+<!-- PANTALLA 2 -->
+<section id="question">
+  <h1>Frida…</h1>
+  <h2>¿Quieres ser mi Valentine? 🖤</h2>
+
+  <button class="primary" onclick="yes()">SÍ 💖</button>
+  <button id="noBtn" class="dark">NO 💔</button>
+</section>
+
+<!-- PANTALLA 3 -->
+<section id="thanks">
+  <h1>Gracias por aceptar 🖤</h1>
+  <p>Eres la mejor persona del mundo</p>
+  <button class="primary" onclick="continueLove()">Continuar</button>
+</section>
+
+<!-- PANTALLA 4 -->
+<section id="love">
+  <h1>I love you ❤️‍🩹</h1>
+</section>
+
+<script>
+const intro = document.getElementById("intro");
+const question = document.getElementById("question");
+const thanks = document.getElementById("thanks");
+const love = document.getElementById("love");
+const noBtn = document.getElementById("noBtn");
+
+function openSpotify() {
+  window.open(
+    "https://open.spotify.com/track/2MuWTIM3b0YEAskbeeFE1i",
+    "_blank"
+  );
+  intro.classList.remove("active");
+  question.classList.add("active");
+}
+
+function yes() {
+  question.classList.remove("active");
+  thanks.classList.add("active");
+}
+
+function continueLove() {
+  thanks.classList.remove("active");
+  love.classList.add("active");
+}
+
+noBtn.addEventListener("mouseover", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
+
+function moveNo(e) {
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 50);
+  noBtn.style.position = "absolute";
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+  explosion(e.clientX || x, e.clientY || y);
+}
+
+function explosion(x,y) {
+  const boom = document.createElement("div");
+  boom.className = "explosion";
+  boom.innerHTML = "💥🖤";
+  boom.style.left = x + "px";
+  boom.style.top = y + "px";
+  document.body.appendChild(boom);
+  setTimeout(()=>boom.remove(),600);
+}
+</script>
+
+</body>
+</html>
