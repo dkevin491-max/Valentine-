@@ -7,45 +7,44 @@
 
 <style>
 @keyframes fadeIn {
-  from { opacity:0; transform:scale(0.9); }
-  to { opacity:1; transform:scale(1); }
+  from {opacity:0; transform:scale(0.9);}
+  to {opacity:1; transform:scale(1);}
 }
 
-@keyframes bounce {
-  0%,100% { transform:translateY(0); }
-  50% { transform:translateY(-10px); }
+@keyframes glow {
+  from{text-shadow:0 0 10px hotpink;}
+  to{text-shadow:0 0 25px red,0 0 40px hotpink;}
 }
 
-@keyframes explode {
-  from { transform:scale(1); opacity:1; }
-  to { transform:scale(2); opacity:0; }
+@keyframes orbit {
+  from {transform: rotate(0deg) translateX(160px) rotate(0deg);}
+  to {transform: rotate(360deg) translateX(160px) rotate(-360deg);}
 }
 
-body {
+body{
   margin:0;
-  font-family: system-ui, sans-serif;
-  background: linear-gradient(160deg,#0f0f1a,#3b1c3c);
+  font-family:system-ui;
+  background:linear-gradient(160deg,#0f0f1a,#3b1c3c);
   color:white;
   text-align:center;
   overflow:hidden;
 }
 
-section {
+section{
   display:none;
   padding:40px 20px;
-  animation: fadeIn 1s ease;
+  animation:fadeIn 1s ease;
+  position:relative;
 }
 
-section.active {
-  display:block;
+.active{display:block;}
+
+h1,h2,p{
+  animation:glow 2s infinite alternate;
 }
 
-h1 {
-  font-size:2.2rem;
-  text-shadow:0 0 15px hotpink;
-}
-
-button {
+/* BOTONES */
+button{
   padding:18px;
   font-size:1.3rem;
   border-radius:18px;
@@ -56,105 +55,137 @@ button {
   display:block;
 }
 
-.primary {
+.primary{
   background:hotpink;
   color:black;
-  animation:bounce 2s infinite;
 }
 
-.dark {
+.dark{
   background:black;
   color:hotpink;
   position:relative;
 }
 
-.explosion {
+/* ÓRBITA */
+.orbit-container{
   position:absolute;
-  font-size:24px;
-  animation: explode 0.6s ease-out forwards;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
   pointer-events:none;
 }
+
+.orbit-img{
+  position:absolute;
+  width:90px;
+  height:90px;
+  object-fit:cover;
+  border-radius:20px;
+  border:4px solid hotpink;
+  box-shadow:0 0 15px hotpink;
+  animation:orbit 18s linear infinite;
+}
+
+.orbit-img:nth-child(2){animation-duration:22s;}
+.orbit-img:nth-child(3){animation-duration:26s;}
+.orbit-img:nth-child(4){animation-duration:30s;}
+.orbit-img:nth-child(5){animation-duration:24s;}
+.orbit-img:nth-child(6){animation-duration:28s;}
+.orbit-img:nth-child(7){animation-duration:20s;}
+.orbit-img:nth-child(8){animation-duration:32s;}
+.orbit-img:nth-child(9){animation-duration:36s;}
 </style>
 </head>
 
 <body>
 
-<!-- PANTALLA 1 -->
+<!-- INTRO -->
 <section id="intro" class="active">
-  <h1>Antes de todo 🖤</h1>
-  <p>Presiona este botón y regresa aquí nuevamente</p>
-  <button class="primary" onclick="openSpotify()">🎧 Presionar</button>
+<h1>Antes de todo 🖤</h1>
+<p>Presiona este botón y regresa aquí nuevamente</p>
+<button class="primary" onclick="openSpotify()">🎧 Presionar</button>
 </section>
 
-<!-- PANTALLA 2 -->
+<!-- PREGUNTA -->
 <section id="question">
-  <h1>Frida…</h1>
-  <h2>¿Quieres ser mi Valentine? 🖤</h2>
 
-  <button class="primary" onclick="yes()">SÍ 💖</button>
-  <button id="noBtn" class="dark">NO 💔</button>
+<h1>Frida 💘</h1>
+<h2>¿Quieres ser mi Valentine? 🖤</h2>
+
+<button class="primary" onclick="yes()">SÍ 💖</button>
+<button id="noBtn" class="dark">NO 💔</button>
+
+<!-- IMÁGENES GIRANDO -->
+<div class="orbit-container">
+
+<img class="orbit-img" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Metallica_live_in_London_2008.jpg">
+
+<img class="orbit-img" src="https://upload.wikimedia.org/wikipedia/commons/3/3e/System_of_a_Down_2017.jpg">
+
+<img class="orbit-img" src="https://upload.wikimedia.org/wikipedia/en/8/80/The_Office_US_logo.svg">
+
+<img class="orbit-img" src="https://static.wikia.nocookie.net/jujutsu-kaisen/images/8/8f/Sukuna.png">
+
+<img class="orbit-img" src="https://static.wikia.nocookie.net/hellokitty/images/2/20/Kuromi.png">
+
+<img class="orbit-img" src="https://upload.wikimedia.org/wikipedia/en/3/3c/Art_the_Clown_Terrifier.jpg">
+
+<img class="orbit-img" src="https://upload.wikimedia.org/wikipedia/en/9/9d/ChuckyChildsPlay2019.png">
+
+<img class="orbit-img" src="https://upload.wikimedia.org/wikipedia/en/3/38/Stranger_Things_logo.png">
+
+<img class="orbit-img" src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Gomez_and_Morticia_Addams.jpg">
+
+</div>
+
 </section>
 
-<!-- PANTALLA 3 -->
+<!-- GRACIAS -->
 <section id="thanks">
-  <h1>Gracias por aceptar 🖤</h1>
-  <p>Eres la mejor persona del mundo</p>
-  <button class="primary" onclick="continueLove()">Continuar</button>
+<h1>Gracias por aceptar 💞</h1>
+<p>Eres la mejor persona del mundo</p>
+<button class="primary" onclick="continueLove()">Continuar</button>
 </section>
 
-<!-- PANTALLA 4 -->
+<!-- FINAL -->
 <section id="love">
-  <h1>I love you ❤️‍🩹</h1>
+<h1>I love you ❤️‍🔥</h1>
 </section>
 
 <script>
-const intro = document.getElementById("intro");
-const question = document.getElementById("question");
-const thanks = document.getElementById("thanks");
-const love = document.getElementById("love");
-const noBtn = document.getElementById("noBtn");
+const intro=document.getElementById("intro");
+const question=document.getElementById("question");
+const thanks=document.getElementById("thanks");
+const love=document.getElementById("love");
+const noBtn=document.getElementById("noBtn");
 
-function openSpotify() {
-  window.open(
-    "https://open.spotify.com/track/2MuWTIM3b0YEAskbeeFE1i",
-    "_blank"
-  );
+function openSpotify(){
+  window.open("https://open.spotify.com/track/2MuWTIM3b0YEAskbeeFE1i","_blank");
   intro.classList.remove("active");
   question.classList.add("active");
 }
 
-function yes() {
+function yes(){
   question.classList.remove("active");
   thanks.classList.add("active");
 }
 
-function continueLove() {
+function continueLove(){
   thanks.classList.remove("active");
   love.classList.add("active");
 }
 
-noBtn.addEventListener("mouseover", moveNo);
-noBtn.addEventListener("touchstart", moveNo);
+noBtn.addEventListener("mouseover",moveNo);
 
-function moveNo(e) {
-  const x = Math.random() * (window.innerWidth - 100);
-  const y = Math.random() * (window.innerHeight - 50);
-  noBtn.style.position = "absolute";
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
-  explosion(e.clientX || x, e.clientY || y);
-}
-
-function explosion(x,y) {
-  const boom = document.createElement("div");
-  boom.className = "explosion";
-  boom.innerHTML = "💥🖤";
-  boom.style.left = x + "px";
-  boom.style.top = y + "px";
-  document.body.appendChild(boom);
-  setTimeout(()=>boom.remove(),600);
+function moveNo(){
+  const x=Math.random()*(window.innerWidth-100);
+  const y=Math.random()*(window.innerHeight-50);
+  noBtn.style.position="absolute";
+  noBtn.style.left=x+"px";
+  noBtn.style.top=y+"px";
 }
 </script>
 
 </body>
 </html>
+  
