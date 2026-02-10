@@ -34,11 +34,10 @@ color:white;
 overflow:hidden;
 }
 
-/* CENTRADO TOTAL */
+/* SECCIONES */
 section{
-display:none;
+display:none; /* SOLO NONE aquí */
 height:100vh;
-display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
@@ -47,7 +46,9 @@ padding:20px;
 animation:fadeIn 1s ease;
 }
 
-.active{display:flex;}
+.active{
+display:flex; /* SOLO active muestra */
+}
 
 h1,h2,p{
 animation:glow 2s infinite alternate;
@@ -74,6 +75,7 @@ background:black;
 color:hotpink;
 }
 
+/* LLUVIA */
 .rain{
 position:fixed;
 top:-10vh;
@@ -120,7 +122,7 @@ z-index:0;
 <button class="primary" onclick="next6()">Continuar 💞</button>
 </section>
 
-<!-- NUEVA PESTAÑA -->
+<!-- ÚLTIMA COSA -->
 <section id="last">
 <h1>Una última cosa</h1>
 <button class="primary" onclick="next7()">Última cosa 🙂‍↕️💕</button>
