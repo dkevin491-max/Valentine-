@@ -3,185 +3,170 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Frida 🖤</title>
+<title>Valentine 💘</title>
 
 <style>
-@keyframes fadeIn{
-from{opacity:0;transform:scale(.9);}
-to{opacity:1;transform:scale(1);}
-}
-
-@keyframes glow{
-from{text-shadow:0 0 8px hotpink;}
-to{text-shadow:0 0 18px hotpink;}
-}
-
-@keyframes slide{
-from{transform:translateX(-120%);}
-to{transform:translateX(120vw);}
-}
-
 body{
 margin:0;
 font-family:system-ui;
+background:linear-gradient(180deg,#ff7eb9,#ff4d88);
+color:white;
+}
+
+/* HEADER */
+.header{
+padding:20px;
+font-size:22px;
+font-weight:bold;
+}
+
+/* TARJETAS */
+.card{
+background:rgba(255,255,255,0.25);
+backdrop-filter:blur(10px);
+margin:15px;
+padding:18px;
+border-radius:25px;
+color:black;
+}
+
+.preview{
+background:white;
+color:black;
+border-radius:25px;
+padding:20px;
+margin:15px;
+}
+
+/* BOTONES */
+.btn{
+background:black;
+color:white;
+padding:18px;
+border:none;
+border-radius:30px;
+width:90%;
+margin:15px auto;
+display:block;
+font-size:18px;
+}
+
+.music{
+background:#1db954;
+}
+
+.tag{
+background:black;
+color:white;
+padding:12px;
+border-radius:20px;
+display:inline-block;
+margin-top:10px;
+}
+
+/* PÁGINA FINAL */
+#final{
+display:none;
+height:100vh;
 background:linear-gradient(160deg,#0f0f1a,#3b1c3c);
 color:white;
 text-align:center;
-overflow:hidden;
-}
-
-section{
-display:none;
 padding:40px 20px;
-animation:fadeIn 1s ease;
-position:relative;
 }
 
-.active{display:block;}
-
-h1,h2,p{
-animation:glow 2s infinite alternate;
-position:relative;
-z-index:2;
-}
-
-button{
+.final-btn{
+background:hotpink;
+color:black;
 padding:18px;
-font-size:1.2rem;
-border-radius:18px;
 border:none;
+border-radius:25px;
+font-size:20px;
 width:80%;
-max-width:320px;
-margin:15px auto;
-display:block;
-z-index:2;
-position:relative;
 }
 
-.primary{background:hotpink;color:black;}
-.dark{background:black;color:hotpink;}
-
-/* Corazones pequeños */
-.heart{
-position:absolute;
-font-size:22px;
-opacity:.8;
-z-index:1;
-animation:slide linear infinite;
+#msg{
+margin-top:25px;
+font-size:18px;
+line-height:1.6;
 }
-
-.h1{top:10%;animation-duration:18s;}
-.h2{top:25%;animation-duration:22s;}
-.h3{top:40%;animation-duration:20s;}
-.h4{top:60%;animation-duration:24s;}
-.h5{top:80%;animation-duration:26s;}
 </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
-<section id="intro" class="active">
-<h1>Antes de todo 🖤</h1>
-<p>Presiona este botón y regresa aquí nuevamente</p>
-<button class="primary" onclick="openSpotify()">🎧 Presionar</button>
+<!-- BUILDER -->
+<div id="builder">
 
-<div class="hearts"></div>
-</section>
+<div class="header">Crear 💘</div>
 
-<!-- PREGUNTA -->
-<section id="question">
+<div class="card">
+✔ Paso 1 · Mensaje<br>
+Para: Frida ✨❤️<br>
+De: Kevin
+</div>
+
+<div class="card">
+✔ Paso 2 · Modo<br>
+Coqueto y bonito 😉
+</div>
+
+<div class="card">
+✔ Paso 3 · Resultado<br>
+Invitación lista 💘
+</div>
+
+<div class="preview">
+<b>Vista previa</b>
+<h2>Para Frida ✨❤️</h2>
+<p>De Kevin</p>
+<p>¿Quieres ser mi Valentine? 🖤</p>
+<div class="tag">💗 Sí crece / No se encoge</div>
+</div>
+
+<button class="btn music" onclick="openMusic()">
+🎧 Abrir música
+</button>
+
+<button class="btn" onclick="openFinal()">
+Generar link 💘
+</button>
+
+</div>
+
+<!-- FINAL -->
+<div id="final">
+
 <h1>Frida 💘</h1>
 <h2>¿Quieres ser mi Valentine? 🖤</h2>
 
-<button class="primary" onclick="yes()">SÍ 💖</button>
-<button id="noBtn" class="dark">NO 💔</button>
+<button class="final-btn" onclick="sayYes()">
+SÍ 💖
+</button>
 
-<div class="hearts"></div>
-</section>
+<p id="msg"></p>
 
-<!-- 3 -->
-<section id="s3">
-<h1>vaya no creí llegar tan lejos 🫣❤️</h1>
-<button class="primary" onclick="next4()">Continuar 💞</button>
-
-<div class="hearts"></div>
-</section>
-
-<!-- 4 -->
-<section id="s4">
-<h1>Prometo que esto<br>no es una propuesta formal 😌</h1>
-<p>solo un plan bonito para el 14 💘</p>
-
-<button class="primary" onclick="next5()">Seguir ✨</button>
-
-<div class="hearts"></div>
-</section>
-
-<!-- 5 -->
-<section id="s5">
-<h1>Considera esto<br>una invitación oficial ✨</h1>
-<p>a pasarla bien 😉</p>
-
-<button class="primary" onclick="next6()">Última cosa 🌹</button>
-
-<div class="hearts"></div>
-</section>
-
-<!-- 6 FINAL -->
-<section id="love">
-<h1>Feliz 14 de febrero 💘</h1>
-<p>Que sea un día cool<br>y con buena compañía 😌</p>
-<p>Tú sabes con quién 😉</p>
-
-<div class="hearts"></div>
-</section>
+</div>
 
 <script>
-const sections={
-intro:document.getElementById("intro"),
-question:document.getElementById("question"),
-s3:document.getElementById("s3"),
-s4:document.getElementById("s4"),
-s5:document.getElementById("s5"),
-love:document.getElementById("love")
-};
-
-function show(sec){
-Object.values(sections).forEach(s=>s.classList.remove("active"));
-sec.classList.add("active");
-}
-
-function openSpotify(){
+function openMusic(){
 window.open("https://open.spotify.com/track/2MuWTIM3b0YEAskbeeFE1i","_blank");
-show(sections.question);
 }
 
-function yes(){show(sections.s3);}
-function next4(){show(sections.s4);}
-function next5(){show(sections.s5);}
-function next6(){show(sections.love);}
-
-/* Botón NO escapa */
-const noBtn=document.getElementById("noBtn");
-noBtn.addEventListener("mouseover",()=>{
-const x=Math.random()*(window.innerWidth-100);
-const y=Math.random()*(window.innerHeight-50);
-noBtn.style.position="absolute";
-noBtn.style.left=x+"px";
-noBtn.style.top=y+"px";
-});
-
-/* Generar muchos corazones */
-document.querySelectorAll(".hearts").forEach(container=>{
-for(let i=0;i<12;i++){
-let h=document.createElement("div");
-h.className="heart h"+((i%5)+1);
-h.style.left=Math.random()*100+"vw";
-h.innerHTML=["❤️","💖","💘","💝","🌹"][Math.floor(Math.random()*5)];
-container.appendChild(h);
+function openFinal(){
+document.getElementById("builder").style.display="none";
+document.getElementById("final").style.display="block";
 }
-});
+
+function sayYes(){
+document.getElementById("msg").innerHTML=
+"vaya no creí llegar tan lejos 🫣❤️<br><br>"+
+"Prometo que esto no es una propuesta formal 😌<br>"+
+"solo un plan bonito para el 14 💘<br><br>"+
+"Considera esto una invitación oficial<br>a pasarla bien 😉<br><br>"+
+"Feliz 14 de febrero 💘<br>"+
+"Que sea un día cool y con buena compañía 😌<br>"+
+"Tú sabes con quién 😉";
+}
 </script>
 
 </body>
