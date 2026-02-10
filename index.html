@@ -97,7 +97,8 @@ z-index:0;
 <section id="question">
 <h1>Frida 💘</h1>
 <h2>Will you be my Valentine? 🖤</h2>
-<button class="primary" onclick="yes()">SÍ 💖</button>
+
+<button id="siBtn" class="primary" onclick="yes()">SÍ 💖</button>
 <button id="noBtn" class="dark">NO 💔</button>
 </section>
 
@@ -123,7 +124,7 @@ z-index:0;
 
 <section id="love">
 <h1>I love you 💞</h1>
-<button class="primary" onclick="next8()">...</button>
+<button class="primary" onclick="next8()">🖤</button>
 </section>
 
 <section id="end">
@@ -150,36 +151,50 @@ function next6(){show(last);}
 function next7(){show(love);}
 function next8(){show(end);}
 
-/* BOTÓN NO ESCAPA */
-noBtn.addEventListener("mouseover",()=>{
-noBtn.style.position="absolute";
-noBtn.style.left=Math.random()*80+"%";
-noBtn.style.top=Math.random()*80+"%";
-});
+/* BOTÓN NO INTELIGENTE */
+const noBtn=document.getElementById("noBtn");
+const siBtn=document.getElementById("siBtn");
 
-/* LLUVIA MEJORADA */
+function moverNo(){
+const siRect=siBtn.getBoundingClientRect();
+
+let x,y,distancia;
+
+do{
+x=Math.random()*(window.innerWidth-100);
+y=Math.random()*(window.innerHeight-60);
+
+const dx=x-siRect.left;
+const dy=y-siRect.top;
+distancia=Math.sqrt(dx*dx+dy*dy);
+
+}while(distancia<200);
+
+noBtn.style.position="absolute";
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+}
+
+/* PC */
+noBtn.addEventListener("mouseover",moverNo);
+
+/* Celular */
+noBtn.addEventListener("touchstart",moverNo);
+
+/* LLUVIA */
 const emojis=["💕","💞","💓","💗","🖤","💜","🩷","✨"];
 
 function rain(){
 const e=document.createElement("div");
 e.className="rain";
-
 e.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
-
-/* tamaños variados */
 e.style.fontSize=(16+Math.random()*20)+"px";
-
-/* posiciones variadas */
 e.style.left=Math.random()*100+"vw";
-
-/* velocidades variadas */
 e.style.animationDuration=(3+Math.random()*3)+"s";
-
 document.body.appendChild(e);
 setTimeout(()=>e.remove(),6000);
 }
 
-/* MUCHOS MÁS */
 setInterval(rain,120);
 </script>
 
