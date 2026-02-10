@@ -70,7 +70,6 @@ background:black;
 color:hotpink;
 }
 
-/* LLUVIA */
 .rain{
 position:fixed;
 top:-10vh;
@@ -99,66 +98,51 @@ z-index:0;
 <h1>Frida 💘</h1>
 <h2>Will you be my Valentine? 🖤</h2>
 
-<button class="primary" onclick="yes()">
-SÍ 💖
-</button>
-
-<button id="noBtn" class="dark">
-NO 💔
-</button>
+<button class="primary" onclick="yes()">SÍ 💖</button>
+<button id="noBtn" class="dark">NO 💔</button>
 </section>
 
 <!-- 3 -->
 <section id="s3">
 <h1>vaya no creí llegar tan lejos 🫣❤️</h1>
-
-<button class="primary" onclick="next4()">
-Continuar 💞
-</button>
+<button class="primary" onclick="next4()">Continuar 💞</button>
 </section>
 
 <!-- 4 -->
 <section id="s4">
 <h1>Te quiero mucho, prepárate<br>será un día bonito 🫶🏼✨</h1>
-
-<button class="primary" onclick="next5()">
-Seguir 💕
-</button>
+<button class="primary" onclick="next5()">Seguir 💕</button>
 </section>
 
 <!-- 5 -->
 <section id="s5">
 <h1>14th februari is coming</h1>
 
+<button class="primary" onclick="showLastThing()">
+Continuar 💞
+</button>
+
+<div id="extra" style="display:none;">
+<p>Una última cosa</p>
 <button class="primary" onclick="next6()">
 Última cosa 🙂‍↕️💕
 </button>
+</div>
 </section>
 
-<!-- 6 -->
+<!-- LOVE -->
 <section id="love">
 <h1>I love you 💞</h1>
-
-<button class="primary" onclick="next7()">
-...
-</button>
+<button class="primary" onclick="next7()">...</button>
 </section>
 
-<!-- 7 FINAL -->
+<!-- FINAL -->
 <section id="end">
 <h1>Fin 🙂‍↕️</h1>
 </section>
 
 <script>
-const sections={
-intro:intro,
-question:question,
-s3:s3,
-s4:s4,
-s5:s5,
-love:love,
-end:end
-};
+const sections={intro,question,s3,s4,s5,love,end};
 
 function show(sec){
 Object.values(sections).forEach(s=>s.classList.remove("active"));
@@ -176,7 +160,11 @@ function next5(){show(s5);}
 function next6(){show(love);}
 function next7(){show(end);}
 
-/* BOTÓN NO ESCAPA */
+function showLastThing(){
+document.getElementById("extra").style.display="block";
+}
+
+/* NO ESCAPA */
 noBtn.addEventListener("mouseover",()=>{
 const x=Math.random()*(window.innerWidth-100);
 const y=Math.random()*(window.innerHeight-50);
@@ -185,7 +173,7 @@ noBtn.style.left=x+"px";
 noBtn.style.top=y+"px";
 });
 
-/* LLUVIA DE EMOJIS */
+/* LLUVIA */
 const emojis=["💕","💞","💓","💗","🖤","💜","🩷","✨"];
 
 function rain(){
