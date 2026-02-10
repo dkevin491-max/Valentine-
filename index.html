@@ -3,170 +3,196 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valentine 💘</title>
+<title>Frida 🖤</title>
 
 <style>
+@keyframes fadeIn{
+from{opacity:0;transform:scale(.9);}
+to{opacity:1;transform:scale(1);}
+}
+
+@keyframes glow{
+from{text-shadow:0 0 10px hotpink;}
+to{text-shadow:0 0 25px hotpink;}
+}
+
+/* BRILLO BOTÓN */
+@keyframes pulse{
+0%{box-shadow:0 0 10px hotpink;}
+50%{box-shadow:0 0 25px hotpink;}
+100%{box-shadow:0 0 10px hotpink;}
+}
+
+/* LLUVIA */
+@keyframes fall{
+to{transform:translateY(110vh);opacity:.9;}
+}
+
 body{
 margin:0;
 font-family:system-ui;
-background:linear-gradient(180deg,#ff7eb9,#ff4d88);
-color:white;
-}
-
-/* HEADER */
-.header{
-padding:20px;
-font-size:22px;
-font-weight:bold;
-}
-
-/* TARJETAS */
-.card{
-background:rgba(255,255,255,0.25);
-backdrop-filter:blur(10px);
-margin:15px;
-padding:18px;
-border-radius:25px;
-color:black;
-}
-
-.preview{
-background:white;
-color:black;
-border-radius:25px;
-padding:20px;
-margin:15px;
-}
-
-/* BOTONES */
-.btn{
-background:black;
-color:white;
-padding:18px;
-border:none;
-border-radius:30px;
-width:90%;
-margin:15px auto;
-display:block;
-font-size:18px;
-}
-
-.music{
-background:#1db954;
-}
-
-.tag{
-background:black;
-color:white;
-padding:12px;
-border-radius:20px;
-display:inline-block;
-margin-top:10px;
-}
-
-/* PÁGINA FINAL */
-#final{
-display:none;
-height:100vh;
 background:linear-gradient(160deg,#0f0f1a,#3b1c3c);
 color:white;
 text-align:center;
-padding:40px 20px;
+overflow:hidden;
 }
 
-.final-btn{
+section{
+display:none;
+min-height:100vh;
+padding:40px 20px;
+animation:fadeIn 1s ease;
+}
+
+.active{display:block;}
+
+h1,h2,p{
+animation:glow 2s infinite alternate;
+}
+
+/* BOTONES */
+button{
+padding:18px;
+font-size:1.2rem;
+border-radius:18px;
+border:none;
+width:80%;
+max-width:320px;
+margin:15px auto;
+display:block;
+}
+
+.primary{
 background:hotpink;
 color:black;
-padding:18px;
-border:none;
-border-radius:25px;
-font-size:20px;
-width:80%;
+animation:pulse 2s infinite;
 }
 
-#msg{
-margin-top:25px;
-font-size:18px;
-line-height:1.6;
+.dark{
+background:black;
+color:hotpink;
+}
+
+/* EMOJIS LLUVIA */
+.rain{
+position:fixed;
+top:-10vh;
+font-size:22px;
+pointer-events:none;
+animation:fall linear forwards;
+z-index:0;
 }
 </style>
 </head>
 
 <body>
 
-<!-- BUILDER -->
-<div id="builder">
+<!-- INTRO -->
+<section id="intro" class="active">
+<h1>Antes de todo 🖤</h1>
+<p>Presiona este botón y regresa aquí nuevamente</p>
 
-<div class="header">Crear 💘</div>
-
-<div class="card">
-✔ Paso 1 · Mensaje<br>
-Para: Frida ✨❤️<br>
-De: Kevin
-</div>
-
-<div class="card">
-✔ Paso 2 · Modo<br>
-Coqueto y bonito 😉
-</div>
-
-<div class="card">
-✔ Paso 3 · Resultado<br>
-Invitación lista 💘
-</div>
-
-<div class="preview">
-<b>Vista previa</b>
-<h2>Para Frida ✨❤️</h2>
-<p>De Kevin</p>
-<p>¿Quieres ser mi Valentine? 🖤</p>
-<div class="tag">💗 Sí crece / No se encoge</div>
-</div>
-
-<button class="btn music" onclick="openMusic()">
-🎧 Abrir música
+<button class="primary" onclick="openSpotify()">
+🎧 Presionar
 </button>
+</section>
 
-<button class="btn" onclick="openFinal()">
-Generar link 💘
-</button>
-
-</div>
-
-<!-- FINAL -->
-<div id="final">
-
+<!-- PREGUNTA -->
+<section id="question">
 <h1>Frida 💘</h1>
 <h2>¿Quieres ser mi Valentine? 🖤</h2>
 
-<button class="final-btn" onclick="sayYes()">
+<button class="primary" onclick="yes()">
 SÍ 💖
 </button>
 
-<p id="msg"></p>
+<button id="noBtn" class="dark">
+NO 💔
+</button>
+</section>
 
-</div>
+<!-- 3 -->
+<section id="s3">
+<h1>vaya no creí llegar tan lejos 🫣❤️</h1>
+
+<button class="primary" onclick="next4()">
+Continuar 💞
+</button>
+</section>
+
+<!-- 4 -->
+<section id="s4">
+<h1>Te quiero mucho, prepárate<br>será un día bonito 🫶🏼✨</h1>
+
+<button class="primary" onclick="next5()">
+Seguir 💕
+</button>
+</section>
+
+<!-- 5 -->
+<section id="s5">
+<h1>14th februari is coming</h1>
+
+<button class="primary" onclick="next6()">
+Última cosa 🙂‍↕️💕
+</button>
+</section>
+
+<!-- FINAL -->
+<section id="love">
+<h1>I love you 💞</h1>
+</section>
 
 <script>
-function openMusic(){
+/* NAVEGACIÓN */
+const sections={
+intro:document.getElementById("intro"),
+question:document.getElementById("question"),
+s3:document.getElementById("s3"),
+s4:document.getElementById("s4"),
+s5:document.getElementById("s5"),
+love:document.getElementById("love")
+};
+
+function show(sec){
+Object.values(sections).forEach(s=>s.classList.remove("active"));
+sec.classList.add("active");
+}
+
+function openSpotify(){
 window.open("https://open.spotify.com/track/2MuWTIM3b0YEAskbeeFE1i","_blank");
+show(sections.question);
 }
 
-function openFinal(){
-document.getElementById("builder").style.display="none";
-document.getElementById("final").style.display="block";
+function yes(){show(sections.s3);}
+function next4(){show(sections.s4);}
+function next5(){show(sections.s5);}
+function next6(){show(sections.love);}
+
+/* BOTÓN NO ESCAPA */
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseover",()=>{
+const x=Math.random()*(window.innerWidth-100);
+const y=Math.random()*(window.innerHeight-50);
+noBtn.style.position="absolute";
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+});
+
+/* LLUVIA DE EMOJIS */
+const emojis=["💕","💞","💓","💗","🖤","💜","🩷","✨"];
+
+function rain(){
+const e=document.createElement("div");
+e.className="rain";
+e.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+e.style.left=Math.random()*100+"vw";
+e.style.animationDuration=(4+Math.random()*4)+"s";
+document.body.appendChild(e);
+setTimeout(()=>e.remove(),8000);
 }
 
-function sayYes(){
-document.getElementById("msg").innerHTML=
-"vaya no creí llegar tan lejos 🫣❤️<br><br>"+
-"Prometo que esto no es una propuesta formal 😌<br>"+
-"solo un plan bonito para el 14 💘<br><br>"+
-"Considera esto una invitación oficial<br>a pasarla bien 😉<br><br>"+
-"Feliz 14 de febrero 💘<br>"+
-"Que sea un día cool y con buena compañía 😌<br>"+
-"Tú sabes con quién 😉";
-}
+setInterval(rain,300);
 </script>
 
 </body>
