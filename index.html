@@ -6,82 +6,75 @@
 <title>Frida 🖤</title>
 
 <style>
-@keyframes fadeIn {
-  from {opacity:0; transform:scale(0.9);}
-  to {opacity:1; transform:scale(1);}
+@keyframes fadeIn{
+from{opacity:0;transform:scale(.9);}
+to{opacity:1;transform:scale(1);}
 }
 
-@keyframes glow {
-  from{text-shadow:0 0 10px hotpink;}
-  to{text-shadow:0 0 25px red,0 0 40px hotpink;}
+@keyframes glow{
+from{text-shadow:0 0 10px hotpink;}
+to{text-shadow:0 0 25px red,0 0 40px hotpink;}
 }
 
-/* MOVIMIENTO LATERAL */
-@keyframes slide {
-  from {transform:translateX(-120%);}
-  to {transform:translateX(120vw);}
+@keyframes slide{
+from{transform:translateX(-120%);}
+to{transform:translateX(120vw);}
 }
 
 body{
-  margin:0;
-  font-family:system-ui;
-  background:linear-gradient(160deg,#0f0f1a,#3b1c3c);
-  color:white;
-  text-align:center;
-  overflow:hidden;
+margin:0;
+font-family:system-ui;
+background:linear-gradient(160deg,#0f0f1a,#3b1c3c);
+color:white;
+text-align:center;
+overflow:hidden;
 }
 
 section{
-  display:none;
-  padding:40px 20px;
-  animation:fadeIn 1s ease;
-  position:relative;
+display:none;
+padding:40px 20px;
+animation:fadeIn 1s ease;
+position:relative;
 }
 
 .active{display:block;}
 
 h1,h2,p{
-  animation:glow 2s infinite alternate;
-  position:relative;
-  z-index:2;
+animation:glow 2s infinite alternate;
+z-index:2;
+position:relative;
 }
 
-/* BOTONES */
 button{
-  padding:18px;
-  font-size:1.3rem;
-  border-radius:18px;
-  border:none;
-  width:80%;
-  max-width:320px;
-  margin:15px auto;
-  display:block;
-  position:relative;
-  z-index:2;
+padding:18px;
+font-size:1.3rem;
+border-radius:18px;
+border:none;
+width:80%;
+max-width:320px;
+margin:15px auto;
+display:block;
+z-index:2;
+position:relative;
 }
 
 .primary{background:hotpink;color:black;}
 .dark{background:black;color:hotpink;}
 
-/* FOTOS SAN VALENTÍN */
-.valentine-img{
-  position:absolute;
-  width:90px;
-  height:90px;
-  object-fit:cover;
-  border-radius:20px;
-  box-shadow:0 0 15px hotpink;
-  opacity:0.8;
-  z-index:1;
-  animation:slide linear infinite;
+/* IMÁGENES SAN VALENTÍN */
+.valentine{
+position:absolute;
+width:80px;
+opacity:.85;
+z-index:1;
+animation:slide linear infinite;
 }
 
-/* diferentes velocidades */
-.v1{top:10%; animation-duration:25s;}
-.v2{top:30%; animation-duration:30s;}
-.v3{top:50%; animation-duration:22s;}
-.v4{top:70%; animation-duration:28s;}
-.v5{top:85%; animation-duration:35s;}
+.v1{top:10%;animation-duration:22s;}
+.v2{top:30%;animation-duration:28s;}
+.v3{top:55%;animation-duration:24s;}
+.v4{top:75%;animation-duration:30s;}
+.v5{top:90%;animation-duration:26s;}
 </style>
 </head>
 
@@ -93,12 +86,21 @@ button{
 <p>Presiona este botón y regresa aquí nuevamente</p>
 <button class="primary" onclick="openSpotify()">🎧 Presionar</button>
 
-<!-- FOTOS -->
-<img class="valentine-img v1" src="https://source.unsplash.com/featured/?valentine,love">
-<img class="valentine-img v2" src="https://source.unsplash.com/featured/?hearts,romance">
-<img class="valentine-img v3" src="https://source.unsplash.com/featured/?roses,love">
-<img class="valentine-img v4" src="https://source.unsplash.com/featured/?couple,romantic">
-<img class="valentine-img v5" src="https://source.unsplash.com/featured/?valentines-day">
+<img class="valentine v1" src="data:image/svg+xml;utf8,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+<text y='50%' font-size='80'>❤️</text></svg>">
+
+<img class="valentine v2" src="data:image/svg+xml;utf8,
+<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>🌹</text></svg>">
+
+<img class="valentine v3" src="data:image/svg+xml;utf8,
+<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>💖</text></svg>">
+
+<img class="valentine v4" src="data:image/svg+xml;utf8,
+<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>💘</text></svg>">
+
+<img class="valentine v5" src="data:image/svg+xml;utf8,
+<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>💝</text></svg>">
 </section>
 
 <!-- QUESTION -->
@@ -109,11 +111,10 @@ button{
 <button class="primary" onclick="yes()">SÍ 💖</button>
 <button id="noBtn" class="dark">NO 💔</button>
 
-<img class="valentine-img v1" src="https://source.unsplash.com/featured/?love,hearts">
-<img class="valentine-img v2" src="https://source.unsplash.com/featured/?romantic,flowers">
-<img class="valentine-img v3" src="https://source.unsplash.com/featured/?roses,romantic">
-<img class="valentine-img v4" src="https://source.unsplash.com/featured/?couple,love">
-<img class="valentine-img v5" src="https://source.unsplash.com/featured/?valentine,gift">
+<img class="valentine v1" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>❤️</text></svg>">
+<img class="valentine v2" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>🌹</text></svg>">
+<img class="valentine v3" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>💖</text></svg>">
+<img class="valentine v4" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>💘</text></svg>">
 </section>
 
 <!-- THANKS -->
@@ -122,19 +123,17 @@ button{
 <p>Eres la mejor persona del mundo</p>
 <button class="primary" onclick="continueLove()">Continuar</button>
 
-<img class="valentine-img v1" src="https://source.unsplash.com/featured/?romantic,hearts">
-<img class="valentine-img v2" src="https://source.unsplash.com/featured/?love,roses">
-<img class="valentine-img v3" src="https://source.unsplash.com/featured/?valentines,couple">
-<img class="valentine-img v4" src="https://source.unsplash.com/featured/?romance,flowers">
+<img class="valentine v1" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>💝</text></svg>">
+<img class="valentine v2" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>❤️</text></svg>">
+<img class="valentine v3" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>🌹</text></svg>">
 </section>
 
 <!-- LOVE -->
 <section id="love">
 <h1>I love you ❤️‍🔥</h1>
 
-<img class="valentine-img v1" src="https://source.unsplash.com/featured/?valentine,romantic">
-<img class="valentine-img v2" src="https://source.unsplash.com/featured/?love,couple">
-<img class="valentine-img v3" src="https://source.unsplash.com/featured/?hearts,red">
+<img class="valentine v1" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>💘</text></svg>">
+<img class="valentine v2" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>💖</text></svg>">
 </section>
 
 <script>
@@ -145,27 +144,27 @@ const love=document.getElementById("love");
 const noBtn=document.getElementById("noBtn");
 
 function openSpotify(){
-  window.open("https://open.spotify.com/track/2MuWTIM3b0YEAskbeeFE1i","_blank");
-  intro.classList.remove("active");
-  question.classList.add("active");
+window.open("https://open.spotify.com/track/2MuWTIM3b0YEAskbeeFE1i","_blank");
+intro.classList.remove("active");
+question.classList.add("active");
 }
 
 function yes(){
-  question.classList.remove("active");
-  thanks.classList.add("active");
+question.classList.remove("active");
+thanks.classList.add("active");
 }
 
 function continueLove(){
-  thanks.classList.remove("active");
-  love.classList.add("active");
+thanks.classList.remove("active");
+love.classList.add("active");
 }
 
 noBtn.addEventListener("mouseover",()=>{
-  const x=Math.random()*(window.innerWidth-100);
-  const y=Math.random()*(window.innerHeight-50);
-  noBtn.style.position="absolute";
-  noBtn.style.left=x+"px";
-  noBtn.style.top=y+"px";
+const x=Math.random()*(window.innerWidth-100);
+const y=Math.random()*(window.innerHeight-50);
+noBtn.style.position="absolute";
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
 });
 </script>
 
