@@ -16,9 +16,10 @@
   to{text-shadow:0 0 25px red,0 0 40px hotpink;}
 }
 
-@keyframes orbit {
-  from {transform: rotate(0deg) translateX(150px) rotate(0deg);}
-  to {transform: rotate(360deg) translateX(150px) rotate(-360deg);}
+/* MOVIMIENTO LATERAL */
+@keyframes slide {
+  from {transform:translateX(-120%);}
+  to {transform:translateX(120vw);}
 }
 
 body{
@@ -41,8 +42,11 @@ section{
 
 h1,h2,p{
   animation:glow 2s infinite alternate;
+  position:relative;
+  z-index:2;
 }
 
+/* BOTONES */
 button{
   padding:18px;
   font-size:1.3rem;
@@ -52,55 +56,52 @@ button{
   max-width:320px;
   margin:15px auto;
   display:block;
+  position:relative;
+  z-index:2;
 }
 
 .primary{background:hotpink;color:black;}
-.dark{background:black;color:hotpink;position:relative;}
+.dark{background:black;color:hotpink;}
 
-.orbit-container{
+/* FOTOS SAN VALENTÍN */
+.valentine-img{
   position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  pointer-events:none;
-}
-
-.orbit-img{
-  position:absolute;
-  width:85px;
-  height:85px;
+  width:90px;
+  height:90px;
   object-fit:cover;
-  border-radius:50%;
-  border:4px solid hotpink;
-  box-shadow:0 0 20px hotpink;
-  animation:orbit 18s linear infinite;
+  border-radius:20px;
+  box-shadow:0 0 15px hotpink;
+  opacity:0.8;
+  z-index:1;
+  animation:slide linear infinite;
 }
 
-.orbit-img:nth-child(2){animation-duration:22s;}
-.orbit-img:nth-child(3){animation-duration:26s;}
-.orbit-img:nth-child(4){animation-duration:30s;}
-.orbit-img:nth-child(5){animation-duration:20s;}
-.orbit-img:nth-child(6){animation-duration:24s;}
+/* diferentes velocidades */
+.v1{top:10%; animation-duration:25s;}
+.v2{top:30%; animation-duration:30s;}
+.v3{top:50%; animation-duration:22s;}
+.v4{top:70%; animation-duration:28s;}
+.v5{top:85%; animation-duration:35s;}
 </style>
 </head>
 
 <body>
 
+<!-- INTRO -->
 <section id="intro" class="active">
 <h1>Antes de todo 🖤</h1>
-<p>Presiona y vuelve</p>
+<p>Presiona este botón y regresa aquí nuevamente</p>
 <button class="primary" onclick="openSpotify()">🎧 Presionar</button>
 
-<div class="orbit-container">
-<img class="orbit-img" src="https://picsum.photos/200?random=11">
-<img class="orbit-img" src="https://picsum.photos/200?random=12">
-<img class="orbit-img" src="https://picsum.photos/200?random=13">
-<img class="orbit-img" src="https://picsum.photos/200?random=14">
-<img class="orbit-img" src="https://picsum.photos/200?random=15">
-<img class="orbit-img" src="https://picsum.photos/200?random=16">
-</div>
+<!-- FOTOS -->
+<img class="valentine-img v1" src="https://source.unsplash.com/featured/?valentine,love">
+<img class="valentine-img v2" src="https://source.unsplash.com/featured/?hearts,romance">
+<img class="valentine-img v3" src="https://source.unsplash.com/featured/?roses,love">
+<img class="valentine-img v4" src="https://source.unsplash.com/featured/?couple,romantic">
+<img class="valentine-img v5" src="https://source.unsplash.com/featured/?valentines-day">
 </section>
 
+<!-- QUESTION -->
 <section id="question">
 <h1>Frida 💘</h1>
 <h2>¿Quieres ser mi Valentine? 🖤</h2>
@@ -108,36 +109,32 @@ button{
 <button class="primary" onclick="yes()">SÍ 💖</button>
 <button id="noBtn" class="dark">NO 💔</button>
 
-<div class="orbit-container">
-<img class="orbit-img" src="https://picsum.photos/200?random=21">
-<img class="orbit-img" src="https://picsum.photos/200?random=22">
-<img class="orbit-img" src="https://picsum.photos/200?random=23">
-<img class="orbit-img" src="https://picsum.photos/200?random=24">
-<img class="orbit-img" src="https://picsum.photos/200?random=25">
-</div>
+<img class="valentine-img v1" src="https://source.unsplash.com/featured/?love,hearts">
+<img class="valentine-img v2" src="https://source.unsplash.com/featured/?romantic,flowers">
+<img class="valentine-img v3" src="https://source.unsplash.com/featured/?roses,romantic">
+<img class="valentine-img v4" src="https://source.unsplash.com/featured/?couple,love">
+<img class="valentine-img v5" src="https://source.unsplash.com/featured/?valentine,gift">
 </section>
 
+<!-- THANKS -->
 <section id="thanks">
 <h1>Gracias por aceptar 💞</h1>
-<p>Eres la mejor 🖤</p>
+<p>Eres la mejor persona del mundo</p>
 <button class="primary" onclick="continueLove()">Continuar</button>
 
-<div class="orbit-container">
-<img class="orbit-img" src="https://picsum.photos/200?random=31">
-<img class="orbit-img" src="https://picsum.photos/200?random=32">
-<img class="orbit-img" src="https://picsum.photos/200?random=33">
-<img class="orbit-img" src="https://picsum.photos/200?random=34">
-</div>
+<img class="valentine-img v1" src="https://source.unsplash.com/featured/?romantic,hearts">
+<img class="valentine-img v2" src="https://source.unsplash.com/featured/?love,roses">
+<img class="valentine-img v3" src="https://source.unsplash.com/featured/?valentines,couple">
+<img class="valentine-img v4" src="https://source.unsplash.com/featured/?romance,flowers">
 </section>
 
+<!-- LOVE -->
 <section id="love">
 <h1>I love you ❤️‍🔥</h1>
 
-<div class="orbit-container">
-<img class="orbit-img" src="https://picsum.photos/200?random=41">
-<img class="orbit-img" src="https://picsum.photos/200?random=42">
-<img class="orbit-img" src="https://picsum.photos/200?random=43">
-</div>
+<img class="valentine-img v1" src="https://source.unsplash.com/featured/?valentine,romantic">
+<img class="valentine-img v2" src="https://source.unsplash.com/featured/?love,couple">
+<img class="valentine-img v3" src="https://source.unsplash.com/featured/?hearts,red">
 </section>
 
 <script>
