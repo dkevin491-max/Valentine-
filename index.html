@@ -36,7 +36,7 @@ overflow:hidden;
 
 /* SECCIONES */
 section{
-display:none; /* SOLO NONE aquí */
+display:none;
 height:100vh;
 flex-direction:column;
 justify-content:center;
@@ -47,7 +47,7 @@ animation:fadeIn 1s ease;
 }
 
 .active{
-display:flex; /* SOLO active muestra */
+display:flex;
 }
 
 h1,h2,p{
@@ -79,7 +79,6 @@ color:hotpink;
 .rain{
 position:fixed;
 top:-10vh;
-font-size:22px;
 pointer-events:none;
 animation:fall linear forwards;
 z-index:0;
@@ -89,14 +88,12 @@ z-index:0;
 
 <body>
 
-<!-- INTRO -->
 <section id="intro" class="active">
 <h1>Antes de todo 🖤</h1>
 <p>Presiona este botón y regresa aquí nuevamente</p>
 <button class="primary" onclick="openSpotify()">🎧 Presionar</button>
 </section>
 
-<!-- PREGUNTA -->
 <section id="question">
 <h1>Frida 💘</h1>
 <h2>Will you be my Valentine? 🖤</h2>
@@ -104,37 +101,31 @@ z-index:0;
 <button id="noBtn" class="dark">NO 💔</button>
 </section>
 
-<!-- 3 -->
 <section id="s3">
-<h1>vaya no creí llegar tan lejos 🫣❤️</h1>
+<h1>vaya.. no creí llegar tan lejos 🫣❤️</h1>
 <button class="primary" onclick="next4()">Continuar 💞</button>
 </section>
 
-<!-- 4 -->
 <section id="s4">
 <h1>Te quiero mucho,<br>prepárate será un día bonito 🫶🏼✨</h1>
 <button class="primary" onclick="next5()">Seguir 💕</button>
 </section>
 
-<!-- 5 -->
 <section id="s5">
 <h1>14th februari is coming</h1>
 <button class="primary" onclick="next6()">Continuar 💞</button>
 </section>
 
-<!-- ÚLTIMA COSA -->
 <section id="last">
-<h1>Una última cosa</h1>
-<button class="primary" onclick="next7()">Última cosa 🙂‍↕️💕</button>
+<h1>Una última cosa🙂‍↕️💕</h1>
+<button class="primary" onclick="next7()">Continuar 💗</button>
 </section>
 
-<!-- LOVE -->
 <section id="love">
 <h1>I love you 💞</h1>
 <button class="primary" onclick="next8()">...</button>
 </section>
 
-<!-- FINAL -->
 <section id="end">
 <h1>Fin 🙂‍↕️</h1>
 </section>
@@ -159,27 +150,37 @@ function next6(){show(last);}
 function next7(){show(love);}
 function next8(){show(end);}
 
-/* NO ESCAPA */
+/* BOTÓN NO ESCAPA */
 noBtn.addEventListener("mouseover",()=>{
 noBtn.style.position="absolute";
 noBtn.style.left=Math.random()*80+"%";
 noBtn.style.top=Math.random()*80+"%";
 });
 
-/* LLUVIA */
+/* LLUVIA MEJORADA */
 const emojis=["💕","💞","💓","💗","🖤","💜","🩷","✨"];
 
 function rain(){
 const e=document.createElement("div");
 e.className="rain";
+
 e.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+
+/* tamaños variados */
+e.style.fontSize=(16+Math.random()*20)+"px";
+
+/* posiciones variadas */
 e.style.left=Math.random()*100+"vw";
-e.style.animationDuration=(4+Math.random()*4)+"s";
+
+/* velocidades variadas */
+e.style.animationDuration=(3+Math.random()*3)+"s";
+
 document.body.appendChild(e);
-setTimeout(()=>e.remove(),8000);
+setTimeout(()=>e.remove(),6000);
 }
 
-setInterval(rain,300);
+/* MUCHOS MÁS */
+setInterval(rain,120);
 </script>
 
 </body>
