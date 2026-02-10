@@ -31,18 +31,23 @@ margin:0;
 font-family:system-ui;
 background:linear-gradient(160deg,#0f0f1a,#3b1c3c);
 color:white;
-text-align:center;
 overflow:hidden;
 }
 
+/* CENTRADO TOTAL */
 section{
 display:none;
-min-height:100vh;
-padding:40px 20px;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
 animation:fadeIn 1s ease;
 }
 
-.active{display:block;}
+.active{display:flex;}
 
 h1,h2,p{
 animation:glow 2s infinite alternate;
@@ -55,8 +60,7 @@ border-radius:18px;
 border:none;
 width:80%;
 max-width:320px;
-margin:15px auto;
-display:block;
+margin:10px;
 }
 
 .primary{
@@ -87,17 +91,13 @@ z-index:0;
 <section id="intro" class="active">
 <h1>Antes de todo 🖤</h1>
 <p>Presiona este botón y regresa aquí nuevamente</p>
-
-<button class="primary" onclick="openSpotify()">
-🎧 Presionar
-</button>
+<button class="primary" onclick="openSpotify()">🎧 Presionar</button>
 </section>
 
 <!-- PREGUNTA -->
 <section id="question">
 <h1>Frida 💘</h1>
 <h2>Will you be my Valentine? 🖤</h2>
-
 <button class="primary" onclick="yes()">SÍ 💖</button>
 <button id="noBtn" class="dark">NO 💔</button>
 </section>
@@ -110,30 +110,26 @@ z-index:0;
 
 <!-- 4 -->
 <section id="s4">
-<h1>Te quiero mucho, prepárate<br>será un día bonito 🫶🏼✨</h1>
+<h1>Te quiero mucho,<br>prepárate será un día bonito 🫶🏼✨</h1>
 <button class="primary" onclick="next5()">Seguir 💕</button>
 </section>
 
 <!-- 5 -->
 <section id="s5">
 <h1>14th februari is coming</h1>
+<button class="primary" onclick="next6()">Continuar 💞</button>
+</section>
 
-<button class="primary" onclick="showLastThing()">
-Continuar 💞
-</button>
-
-<div id="extra" style="display:none;">
-<p>Una última cosa</p>
-<button class="primary" onclick="next6()">
-Última cosa 🙂‍↕️💕
-</button>
-</div>
+<!-- NUEVA PESTAÑA -->
+<section id="last">
+<h1>Una última cosa</h1>
+<button class="primary" onclick="next7()">Última cosa 🙂‍↕️💕</button>
 </section>
 
 <!-- LOVE -->
 <section id="love">
 <h1>I love you 💞</h1>
-<button class="primary" onclick="next7()">...</button>
+<button class="primary" onclick="next8()">...</button>
 </section>
 
 <!-- FINAL -->
@@ -142,7 +138,7 @@ Continuar 💞
 </section>
 
 <script>
-const sections={intro,question,s3,s4,s5,love,end};
+const sections={intro,question,s3,s4,s5,last,love,end};
 
 function show(sec){
 Object.values(sections).forEach(s=>s.classList.remove("active"));
@@ -157,20 +153,15 @@ show(question);
 function yes(){show(s3);}
 function next4(){show(s4);}
 function next5(){show(s5);}
-function next6(){show(love);}
-function next7(){show(end);}
-
-function showLastThing(){
-document.getElementById("extra").style.display="block";
-}
+function next6(){show(last);}
+function next7(){show(love);}
+function next8(){show(end);}
 
 /* NO ESCAPA */
 noBtn.addEventListener("mouseover",()=>{
-const x=Math.random()*(window.innerWidth-100);
-const y=Math.random()*(window.innerHeight-50);
 noBtn.style.position="absolute";
-noBtn.style.left=x+"px";
-noBtn.style.top=y+"px";
+noBtn.style.left=Math.random()*80+"%";
+noBtn.style.top=Math.random()*80+"%";
 });
 
 /* LLUVIA */
