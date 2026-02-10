@@ -12,8 +12,8 @@ to{opacity:1;transform:scale(1);}
 }
 
 @keyframes glow{
-from{text-shadow:0 0 10px hotpink;}
-to{text-shadow:0 0 25px red,0 0 40px hotpink;}
+from{text-shadow:0 0 8px hotpink;}
+to{text-shadow:0 0 18px hotpink;}
 }
 
 @keyframes slide{
@@ -41,13 +41,13 @@ position:relative;
 
 h1,h2,p{
 animation:glow 2s infinite alternate;
-z-index:2;
 position:relative;
+z-index:2;
 }
 
 button{
 padding:18px;
-font-size:1.3rem;
+font-size:1.2rem;
 border-radius:18px;
 border:none;
 width:80%;
@@ -61,20 +61,20 @@ position:relative;
 .primary{background:hotpink;color:black;}
 .dark{background:black;color:hotpink;}
 
-/* IMÁGENES SAN VALENTÍN */
-.valentine{
+/* Corazones pequeños */
+.heart{
 position:absolute;
-width:80px;
-opacity:.85;
+font-size:22px;
+opacity:.8;
 z-index:1;
 animation:slide linear infinite;
 }
 
-.v1{top:10%;animation-duration:22s;}
-.v2{top:30%;animation-duration:28s;}
-.v3{top:55%;animation-duration:24s;}
-.v4{top:75%;animation-duration:30s;}
-.v5{top:90%;animation-duration:26s;}
+.h1{top:10%;animation-duration:18s;}
+.h2{top:25%;animation-duration:22s;}
+.h3{top:40%;animation-duration:20s;}
+.h4{top:60%;animation-duration:24s;}
+.h5{top:80%;animation-duration:26s;}
 </style>
 </head>
 
@@ -86,24 +86,10 @@ animation:slide linear infinite;
 <p>Presiona este botón y regresa aquí nuevamente</p>
 <button class="primary" onclick="openSpotify()">🎧 Presionar</button>
 
-<img class="valentine v1" src="data:image/svg+xml;utf8,
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-<text y='50%' font-size='80'>❤️</text></svg>">
-
-<img class="valentine v2" src="data:image/svg+xml;utf8,
-<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>🌹</text></svg>">
-
-<img class="valentine v3" src="data:image/svg+xml;utf8,
-<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>💖</text></svg>">
-
-<img class="valentine v4" src="data:image/svg+xml;utf8,
-<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>💘</text></svg>">
-
-<img class="valentine v5" src="data:image/svg+xml;utf8,
-<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>💝</text></svg>">
+<div class="hearts"></div>
 </section>
 
-<!-- QUESTION -->
+<!-- PREGUNTA -->
 <section id="question">
 <h1>Frida 💘</h1>
 <h2>¿Quieres ser mi Valentine? 🖤</h2>
@@ -111,60 +97,90 @@ animation:slide linear infinite;
 <button class="primary" onclick="yes()">SÍ 💖</button>
 <button id="noBtn" class="dark">NO 💔</button>
 
-<img class="valentine v1" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>❤️</text></svg>">
-<img class="valentine v2" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>🌹</text></svg>">
-<img class="valentine v3" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>💖</text></svg>">
-<img class="valentine v4" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>💘</text></svg>">
+<div class="hearts"></div>
 </section>
 
-<!-- THANKS -->
-<section id="thanks">
-<h1>Gracias por aceptar 💞</h1>
-<p>Eres la mejor persona del mundo</p>
-<button class="primary" onclick="continueLove()">Continuar</button>
+<!-- 3 -->
+<section id="s3">
+<h1>vaya no creí llegar tan lejos 🫣❤️</h1>
+<button class="primary" onclick="next4()">Continuar 💞</button>
 
-<img class="valentine v1" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>💝</text></svg>">
-<img class="valentine v2" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>❤️</text></svg>">
-<img class="valentine v3" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>🌹</text></svg>">
+<div class="hearts"></div>
 </section>
 
-<!-- LOVE -->
+<!-- 4 -->
+<section id="s4">
+<h1>Prometo que esto<br>no es una propuesta formal 😌</h1>
+<p>solo un plan bonito para el 14 💘</p>
+
+<button class="primary" onclick="next5()">Seguir ✨</button>
+
+<div class="hearts"></div>
+</section>
+
+<!-- 5 -->
+<section id="s5">
+<h1>Considera esto<br>una invitación oficial ✨</h1>
+<p>a pasarla bien 😉</p>
+
+<button class="primary" onclick="next6()">Última cosa 🌹</button>
+
+<div class="hearts"></div>
+</section>
+
+<!-- 6 FINAL -->
 <section id="love">
-<h1>I love you ❤️‍🔥</h1>
+<h1>Feliz 14 de febrero 💘</h1>
+<p>Que sea un día cool<br>y con buena compañía 😌</p>
+<p>Tú sabes con quién 😉</p>
 
-<img class="valentine v1" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>💘</text></svg>">
-<img class="valentine v2" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><text y='50%' font-size='80'>💖</text></svg>">
+<div class="hearts"></div>
 </section>
 
 <script>
-const intro=document.getElementById("intro");
-const question=document.getElementById("question");
-const thanks=document.getElementById("thanks");
-const love=document.getElementById("love");
-const noBtn=document.getElementById("noBtn");
+const sections={
+intro:document.getElementById("intro"),
+question:document.getElementById("question"),
+s3:document.getElementById("s3"),
+s4:document.getElementById("s4"),
+s5:document.getElementById("s5"),
+love:document.getElementById("love")
+};
+
+function show(sec){
+Object.values(sections).forEach(s=>s.classList.remove("active"));
+sec.classList.add("active");
+}
 
 function openSpotify(){
 window.open("https://open.spotify.com/track/2MuWTIM3b0YEAskbeeFE1i","_blank");
-intro.classList.remove("active");
-question.classList.add("active");
+show(sections.question);
 }
 
-function yes(){
-question.classList.remove("active");
-thanks.classList.add("active");
-}
+function yes(){show(sections.s3);}
+function next4(){show(sections.s4);}
+function next5(){show(sections.s5);}
+function next6(){show(sections.love);}
 
-function continueLove(){
-thanks.classList.remove("active");
-love.classList.add("active");
-}
-
+/* Botón NO escapa */
+const noBtn=document.getElementById("noBtn");
 noBtn.addEventListener("mouseover",()=>{
 const x=Math.random()*(window.innerWidth-100);
 const y=Math.random()*(window.innerHeight-50);
 noBtn.style.position="absolute";
 noBtn.style.left=x+"px";
 noBtn.style.top=y+"px";
+});
+
+/* Generar muchos corazones */
+document.querySelectorAll(".hearts").forEach(container=>{
+for(let i=0;i<12;i++){
+let h=document.createElement("div");
+h.className="heart h"+((i%5)+1);
+h.style.left=Math.random()*100+"vw";
+h.innerHTML=["❤️","💖","💘","💝","🌹"][Math.floor(Math.random()*5)];
+container.appendChild(h);
+}
 });
 </script>
 
