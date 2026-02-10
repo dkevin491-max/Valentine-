@@ -16,14 +16,12 @@ from{text-shadow:0 0 10px hotpink;}
 to{text-shadow:0 0 25px hotpink;}
 }
 
-/* BRILLO BOTÓN */
 @keyframes pulse{
 0%{box-shadow:0 0 10px hotpink;}
 50%{box-shadow:0 0 25px hotpink;}
 100%{box-shadow:0 0 10px hotpink;}
 }
 
-/* LLUVIA */
 @keyframes fall{
 to{transform:translateY(110vh);opacity:.9;}
 }
@@ -50,7 +48,6 @@ h1,h2,p{
 animation:glow 2s infinite alternate;
 }
 
-/* BOTONES */
 button{
 padding:18px;
 font-size:1.2rem;
@@ -73,7 +70,7 @@ background:black;
 color:hotpink;
 }
 
-/* EMOJIS LLUVIA */
+/* LLUVIA */
 .rain{
 position:fixed;
 top:-10vh;
@@ -100,7 +97,7 @@ z-index:0;
 <!-- PREGUNTA -->
 <section id="question">
 <h1>Frida 💘</h1>
-<h2>¿Quieres ser mi Valentine? 🖤</h2>
+<h2>Will you be my Valentine? 🖤</h2>
 
 <button class="primary" onclick="yes()">
 SÍ 💖
@@ -138,20 +135,29 @@ Seguir 💕
 </button>
 </section>
 
-<!-- FINAL -->
+<!-- 6 -->
 <section id="love">
 <h1>I love you 💞</h1>
+
+<button class="primary" onclick="next7()">
+...
+</button>
+</section>
+
+<!-- 7 FINAL -->
+<section id="end">
+<h1>Fin 🙂‍↕️</h1>
 </section>
 
 <script>
-/* NAVEGACIÓN */
 const sections={
-intro:document.getElementById("intro"),
-question:document.getElementById("question"),
-s3:document.getElementById("s3"),
-s4:document.getElementById("s4"),
-s5:document.getElementById("s5"),
-love:document.getElementById("love")
+intro:intro,
+question:question,
+s3:s3,
+s4:s4,
+s5:s5,
+love:love,
+end:end
 };
 
 function show(sec){
@@ -161,16 +167,16 @@ sec.classList.add("active");
 
 function openSpotify(){
 window.open("https://open.spotify.com/track/2MuWTIM3b0YEAskbeeFE1i","_blank");
-show(sections.question);
+show(question);
 }
 
-function yes(){show(sections.s3);}
-function next4(){show(sections.s4);}
-function next5(){show(sections.s5);}
-function next6(){show(sections.love);}
+function yes(){show(s3);}
+function next4(){show(s4);}
+function next5(){show(s5);}
+function next6(){show(love);}
+function next7(){show(end);}
 
 /* BOTÓN NO ESCAPA */
-const noBtn=document.getElementById("noBtn");
 noBtn.addEventListener("mouseover",()=>{
 const x=Math.random()*(window.innerWidth-100);
 const y=Math.random()*(window.innerHeight-50);
